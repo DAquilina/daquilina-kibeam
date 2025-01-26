@@ -193,17 +193,18 @@ export default class Grid {
     /**
      * Makes the cell at the given coordinates the highlighted cell
      *
-     * @param {number} x 
-     * @param {number} y 
-     * @param {*} context 
+     * @param {number} x
+     * @param {number} y
      */
-    doSelect(x, y, context) {
+    doSelect(x, y) {
 
-        doDeselect((context || this).cellIdFromXY(...(context || this).highlightedCell))
-        doSelect((context || this).cellIdFromXY(x, y));
+        if (!this.isEditing && this.isCellPresent(x, y)) {
+            doDeselect(this.cellIdFromXY(...this.highlightedCell))
+            doSelect(this.cellIdFromXY(x, y));
 
-        this.#highlightX = x;
-        this.#highlightY = y;
+            this.#highlightX = x;
+            this.#highlightY = y;
+        }
     }
 
     /**
@@ -232,6 +233,18 @@ export default class Grid {
     }
 
     /**
+     * Determines if the given coordinates are valid for the current grid.
+     *
+     * @param {number} x 
+     * @param {number} y 
+     * @returns 
+     */
+    isCellPresent(x, y) {
+
+        return (x >= 0 && y >= 0 && y < this.#grid.length && x < this.#grid[y].length);
+    }
+
+    /**
      * Stores the value entered by the user and returns the grid to readonly mode
      *
      * @param {*} context 
@@ -248,21 +261,14 @@ export default class Grid {
 
     /**
      * Moves the highlighted cell down by one cell, if possible
-     * 
-     * TODO: account for the case where there is an imperfect number of cells and the user tries
-     *       to navigate to the empty space(s) at the end of the grid
      *
      * @param {*} context 
      */
     selectDown(context) {
 
-        if (!(context ?? this).isEditing) {
-            const [x, y] = (context ?? this).highlightedCell;
+        const [x, y] = (context ?? this).highlightedCell;
 
-            if (y < ((context ?? this).rowCount - 1)) {
-                (context ?? this).doSelect(x, y + 1, context);
-            }
-        }
+        (context ?? this).doSelect(x, y + 1);
     }
 
     /**
@@ -272,13 +278,9 @@ export default class Grid {
      */
     selectLeft(context) {
 
-        if (!(context ?? this).isEditing) {
-            const [x, y] = (context ?? this).highlightedCell;
+        const [x, y] = (context ?? this).highlightedCell;
 
-            if (x > 0) {
-                (context ?? this).doSelect(x - 1, y, context);
-            }
-        }
+        (context ?? this).doSelect(x - 1, y);
     }
 
     /**
@@ -288,13 +290,9 @@ export default class Grid {
      */
     selectRight(context) {
 
-        if (!(context ?? this).isEditing) {
-            const [x, y] = (context ?? this).highlightedCell;
+        const [x, y] = (context ?? this).highlightedCell;
 
-            if (x < ((context ?? this).columnCountCurrentRow - 1)) {
-                (context ?? this).doSelect(x + 1, y, context);
-            }
-        }
+        (context ?? this).doSelect(x + 1, y);
     }
 
     /**
@@ -304,13 +302,9 @@ export default class Grid {
      */
     selectUp(context) {
 
-        if (!(context ?? this).isEditing) {
-            const [x, y] = (context ?? this).highlightedCell;
+        const [x, y] = (context ?? this).highlightedCell;
 
-            if (y > 0) {
-                (context ?? this).doSelect(x, y - 1, context);
-            }
-        }
+        (context ?? this).doSelect(x, y - 1);
     }
 
     /**

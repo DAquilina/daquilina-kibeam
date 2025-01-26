@@ -40,3 +40,13 @@ ROW [[2-1] [2-2] [2-3]]
 ROW [[3-1] [3-2] [3-3]]
 ROW [[4-1] [4-2]]
 ```
+
+## New Concepts
+
+I decided to also use this assessment as a learning opportunity, so for the sake of completeness I've
+included a list of the concepts I have had limited prior experience with below.
+
+- Dynamically generating a style block
+- Overwriting CSS variables on the fly
+- CSS Grid
+- Manual implementation of two-way binding (sort of)
