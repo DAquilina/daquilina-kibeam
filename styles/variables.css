@@ -1,0 +1,20 @@
+:root {
+    --backgroundColor: #DFDFFF;
+    --borderColor: rgba(0, 0, 0, 0.9);
+    --highlightColor: rgba(35, 35, 250, 0.5);
+    --overlayColor: rgba(0, 0, 0, 0.7);
+    --textColor: #1B1B1B;
+
+    --gridColumnCount: 2;
+
+    --fontFamily: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Geneva, Verdana, sans-serif;
+    --fontSize: 16px;
+
+    --borderRadius: 15px;
+    --spacing: 1rem;
+
+    --zIndexBehind: -1;
+    --zIndexOverlay: 9;
+    --zIndexOverlayContent: 10;
+    --zIndexPriority: 5;
+}

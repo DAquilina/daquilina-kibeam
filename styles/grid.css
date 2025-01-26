@@ -1,0 +1,55 @@
+@import "./variables.css";
+
+#grid-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    display: grid;
+    gap: var(--spacing);
+    grid-row-start: 1;
+    grid-row-end: var(--gridColumnCount);
+    grid-template-columns: repeat(var(--gridColumnCount), 1fr);
+    height: 50vh;
+    margin: 0 auto;
+    width: 50vh;
+
+    transform: translate(-50%, -50%);
+}
+
+@media all and (orientation: portrait) {
+    #grid-container {
+        height: 50vw;
+        width: 50vw;
+    }
+}
+
+#grid-container .cell {
+    background-color: rgba(0, 0, 0, 0.0);
+    border: 2px solid var(--borderColor);
+    padding: var(--spacing);
+    place-content: center;
+    text-align: center;
+
+    transition: background-color 0.3s ease;
+}
+
+#grid-container .cell.highlighted {
+    background-color: var(--highlightColor);
+}
+
+#grid-container .cell:first-child {
+    border-top-left-radius: var(--borderRadius);
+}
+
+#grid-container .cell.bottom-left {
+    border-bottom-left-radius: var(--borderRadius);
+}
+
+#grid-container .cell.bottom-right {
+    border-bottom-right-radius: var(--borderRadius);
+}
+
+#grid-container .cell.top-right {
+    border-top-right-radius: var(--borderRadius);
+}

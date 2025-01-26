@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Interactive Grid Application</title>
+
+        <link rel="stylesheet" href="styles/index.css" />
+    </head>
+    <body>
+        <div id="content-container">
+            <div id="grid-container">
+            </div>
+        </div>
+
+        <div id="overlay" class="hidden">
+            <div id="text-cell-edit-dialog" class="dialog">
+                <label for="cell-edit-input">Set a value</label>
+                <input id="cell-edit-input" type="text" class="value-input text" autofocus />
+                <aside>Press 'Enter' to save, or 'Esc' to cancel.</aside>
+            </div>
+        </div>
+
+        <script type="module" src="scripts/index.mjs"></script>
+    </body>
+</html>

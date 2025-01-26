@@ -1,0 +1,75 @@
+@import "./animations.css";
+@import "./variables.css";
+
+#overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    background-color: var(--overlayColor);
+    visibility: visible;
+
+    z-index: var(--zIndexOverlay);
+
+    animation: 0.3s ease fadeIn;
+    animation-iteration-count: 1;
+}
+
+#overlay.hidden {
+    opacity: 0.0;
+    visibility: hidden;
+    z-index: var(--zIndexBehind);
+
+    animation: none;
+}
+
+.dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    background-color: var(--backgroundColor);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+    display: none;
+    padding: var(--spacing);
+
+    transform: translate(-50%, -50%);
+}
+
+#overlay.text #text-cell-edit-dialog {
+    display: block;
+}
+
+#text-cell-edit-dialog aside {
+    font-size: 50%;
+    font-style: italic;
+}
+
+#text-cell-edit-dialog label {
+    background-color: var(--backgroundColor);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 75%;
+    margin-top: -50%;
+    padding: 1px 4px;
+
+    transform: translate(0.75rem, 50%);
+}
+
+#text-cell-edit-dialog input {
+    background: none;
+    border: 1px solid var(--textColor);
+    border-radius: 0.75rem;
+    cursor: text;
+    display: block;
+    margin-bottom: var(--spacing);
+    padding: calc(var(--spacing) / 2);
+    width: calc(100% - var(--spacing));
+}
+
+#text-cell-edit-dialog input:focus {
+    outline: 2px dotted var(--highlightColor);
+    outline-offset: calc(var(--spacing) / 2);
+}
