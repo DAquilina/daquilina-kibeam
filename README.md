@@ -5,6 +5,8 @@ The user can change the highlighted cell using the arrow keys and edit the value
 `Enter`. When editing, pressing `Enter` again will save the value, and pressing `Esc` will cancel edit
 mode and return the grid to read-only mode.
 
+**To run**: Just open index.html in the modern browser of your choice! The app uses fairly modern features of both JavaScript and CSS, so older browsers may not operate as expected.
+
 ## Configuration
 
 The grid can be customized by editing `assets/config.json` according to the schema below:
